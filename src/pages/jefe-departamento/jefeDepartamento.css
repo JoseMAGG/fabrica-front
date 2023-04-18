@@ -1,38 +1,29 @@
-.form_container {
+.div_menu {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.form {
+.div_menu_buttons {
     display: grid;
-    text-align: left;
-    width: 40rem;
+    text-align: center;
+    justify-content: center;
+    width: 45rem;
     border: 2px solid var(--main-color);
     padding: 80px 30px 80px 30px;
 }
 
-.title_color {
-    color: var(--main-color);
-}
-
-.form_button {
+.menu_button {
     background: var(--main-color);
     border: none;
     padding: 10px;
     color: #fff;
-    width: 130px;
+    height: 50px;
     margin-top: 3%;
+    border-radius: 6px;
 }
 
-.form_button:hover {
+.menu_button:hover {
     background: var(--hover-color)
-}
-
-.form_input {
-    border-radius: 3px;
-    border: solid 2px #e5e5e5;
-    width: 240px;
-    padding: 10px 0 10px 10px;
 }

@@ -1,5 +1,5 @@
 import { useForm } from '../hooks/useForm';
-import './loginPage.css';
+import './login.css';
 
 export const LoginPage = () => {
 
@@ -11,6 +11,7 @@ export const LoginPage = () => {
     const onSubmitForm = (event) => {
         event.preventDefault();
         onResetForm();
+        console.log(user + password)
     }
 
     return (
@@ -27,7 +28,6 @@ export const LoginPage = () => {
                     name="user"
                     value={user}
                     onChange={onInputChange}
-
                 />
 
                 <label className="title_color"><b>*Contraseña</b></label>

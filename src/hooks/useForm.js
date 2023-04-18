@@ -10,7 +10,6 @@ export const useForm = (initialForm = {}) => {
         setformState({
             ...formState,
             [name]: value,
-
         })
     }
 
