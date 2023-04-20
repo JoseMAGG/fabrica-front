@@ -1,0 +1,29 @@
+.form-cursos {
+    width: 40rem;
+    display: grid;
+    justify-content: left;
+}
+
+.form-cursos__div-label {
+    color: var(--main-color);
+    height: 3rem;
+}
+
+.form-cursos__div-inner {
+    height: 3rem;
+}
+
+.mycheck {
+    border-radius: 2px;
+    background-color: #fff;
+    border: 2px solid #c1c1c1;
+    font-size: 1px;
+    height: 24px;
+    position: absolute;
+    width: 24px;
+    z-index: 1;
+}
+
+.mycheck:active {
+    background-color: green;
+}

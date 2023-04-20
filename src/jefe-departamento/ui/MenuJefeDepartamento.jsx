@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 
-import '../jefe-departamento/MenuJefeDepartamento';
+import '../css/jefeDepartamento.css';
 
-export const MenuVicedecano = () => {
+export const MenuJefeDepartamento = () => {
 
     const navigate = useNavigate();
 
     const SelectMenu = ({ target }) => {
-        if (target.name == 'button_jefe_departamento') {
-            navigate('/menu-jefe-departamento')
+        if (target.name == 'button_cursos') {
+            navigate('/menu-jefe-departamento/menu-cursos')
         } else {
             navigate('/menu-vicedecano')
         }
@@ -17,7 +17,7 @@ export const MenuVicedecano = () => {
     return (
         <div className="div_menu">
             <div className="div_menu_buttons">
-                <h2 className="mb-4 title_color d-flex justify-content-center">Menú Vicedecano: </h2>
+                <h2 className="mb-4 title_color d-flex justify-content-center">Menú Jefe de Departamento: </h2>
 
                 <button
                     className="menu_button"
@@ -33,14 +33,6 @@ export const MenuVicedecano = () => {
                     name="button_grupos"
                 >
                     Grupos
-                </button>
-
-                <button
-                    className="menu_button"
-                    onClick={SelectMenu}
-                    name="button_fechas_semestrales"
-                >
-                    Fechas Semestrales
                 </button>
 
             </div>
