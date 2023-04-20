@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-import './jefeDepartamento.css';
+import "../css/vicedecano.css";
 
-export const MenuJefeDepartamento = () => {
+export const MenuVicedecano = () => {
 
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export const MenuJefeDepartamento = () => {
     return (
         <div className="div_menu">
             <div className="div_menu_buttons">
-                <h2 className="mb-4 title_color d-flex justify-content-center">Menú Jefe de Departamento: </h2>
+                <h2 className="mb-4 title_color d-flex justify-content-center">Menú Vicedecano: </h2>
 
                 <button
                     className="menu_button"
