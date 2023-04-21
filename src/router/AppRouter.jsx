@@ -9,12 +9,14 @@ import { ModificarCurso } from "../components/ModificarCurso";
 import { AgregarCurso } from "../components/AgregarCurso";
 import { NavBarJefeDepartamento } from "../jefe-departamento/ui/NavBarJefeDepartamento";
 import { NavButtons } from "../components/NavButtons";
+import { AgregarFecha } from "../vicedecano/pages/AgregarFecha";
 
 export const AppRouter = () => {
     return (
         <>
+               
             <Routes>
-
+                
                 <Route path="/" element={<SelectRole />} />
                 <Route path="menu-jefe-departamento" element={<MenuJefeDepartamento />} />
                 <Route path="menu-vicedecano" element={<MenuVicedecano />} />
@@ -22,7 +24,7 @@ export const AppRouter = () => {
                 {/* <Route path="/menu-jefe-departamento/menu-cursos/*" element={<JefeDepartamentoRoutes />}/> */}
 
                 <Route path="/menu-jefe-departamento/menu-cursos/*" element={<Cursos />}/>
-
+                <Route path="/menu-vicedecano/menu-fechas-semestrales/*" element={<AgregarFecha/>} />
                 {/* <Route path="/menu-jefe-departamento/menu-cursos/*" element={<Cursos />}/>  */}
 
 

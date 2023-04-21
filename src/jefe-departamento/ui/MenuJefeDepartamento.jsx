@@ -10,7 +10,7 @@ export const MenuJefeDepartamento = () => {
         if (target.name == 'button_cursos') {
             navigate('/menu-jefe-departamento/menu-cursos')
         } else {
-            navigate('/menu-vicedecano')
+            navigate('/menu-jefe-departamento/menu-')
         }
     }
 
