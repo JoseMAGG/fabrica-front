@@ -14,7 +14,6 @@ export const DatePickers = (props) => {
     if(props.currentValue?.startDate && props.currentValue?.endDate){
       setStartDate(props.currentValue?.startDate )
       setEndDate(props.currentValue?.endDate)
-      
     }
     
      
@@ -27,7 +26,14 @@ export const DatePickers = (props) => {
         startDate: new Date(startDate),
         endDate: new Date(endDate),
       };
-          props.setFecha(newDate)   
+        props.setFecha(newDate)
+    }
+    if(props.visible === false){
+      const newDate = {
+        startDate: startDate? new Date(startDate): null,
+        endDate: startDate? new Date(startDate): null,
+      };
+      props.setFecha(newDate)
     }
     
   }, [ startDate, endDate]);
@@ -47,12 +53,14 @@ export const DatePickers = (props) => {
     <>
       <section className='picker'>
         <div className='title'>
-        <h1>{props.title}</h1>
+        <h5>{props.title}</h5>
         </div>
-        <DatePicker  disabled={props.activado} selected={startDate}  dateFormat={'dd/MM/yyyy'} selectsStart onChange={(date) => setStartDate(date)} />
-       
-        {props.visible ? <DatePicker disabled={props.activado} selected={endDate}  dateFormat={'dd/MM/yyyy'} selectsEnd minDate={startDate} onChange={(date) => setEndDate(date)} /> : '' }
+        <div className='pickers'>
+          <DatePicker className='datapicker' disabled={props.activado} selected={startDate}  dateFormat={'dd/MM/yyyy'} selectsStart onChange={(date) => setStartDate(date)}  placeholderText='Inicio  📆'/>
         
+        {props.visible ? <DatePicker disabled={props.activado} selected={endDate}  dateFormat={'dd/MM/yyyy'} selectsEnd minDate={startDate} onChange={(date) => setEndDate(date)} placeholderText='Finalización   📆'/> : '' }
+        
+        </div>
       </section>
     </>
   );

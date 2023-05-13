@@ -69,9 +69,9 @@ export function Modificar() {
     return (
       <>
         <div className='container'>
-        <DatePickers currentValue={fechaInicio}   title="Fecha de inicio"     visible={true} setFecha={setFechaInicio} />
+        <DatePickers currentValue={fechaInicio}   title="Fecha de inicio"     visible={false} setFecha={setFechaInicio} />
         <DatePickers   currentValue={fechaPago}            visible={true}  title="Fecha de pagos"            setFecha={setFechaPago} />
-        <DatePickers   currentValue={fechaOferta}          visible={false}  title="Publicación de la Oferta"  setFecha={setFechaOferta} />
+        <DatePickers   currentValue={fechaOferta}          visible={true}  title="Publicación de la Oferta"  setFecha={setFechaOferta} />
         <DatePickers   currentValue={fechaMatricula}       visible={true}  title="Fecha de Matricula"        setFecha={setFechaMatricula} />
         <DatePickers   currentValue={fechaAjustes}         visible={true}  title="Fecha de Ajustes"          setFecha={setFechaAjustes} />
         <DatePickers   currentValue={fechaClases}          visible={true}  title="Fecha de Inicio Clases"          setFecha={setFechaClases} />

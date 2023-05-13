@@ -1,0 +1,66 @@
+.container{
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.subcontainer{
+  border: 2px solid #222;
+  border-radius: 10px;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.subcontainer section{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+}
+
+.subcontainer section input{
+  width: min(240px, 100%);
+  border: 1px solid #888;
+  border-radius: 10px;
+  padding: 3px 10px ;
+  text-align: center;
+}
+
+.subcontainer section input:focus{
+  outline: none;
+  border: 1px solid #000;
+}
+
+.subcontainer section input:disabled{
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+.subcontainer section .pickers{
+ display: flex;
+}
+
+@media screen and (max-width: 1010px){
+  .subcontainer section{
+    grid-template-columns: 2fr;
+  }
+  .subcontainer section .pickers{
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 530px){
+  .subcontainer section{
+    grid-template-columns: 1fr;
+  }
+  .subcontainer section .pickers{
+    flex-direction: column;
+    gap: 15px;
+  }
+  .subcontainer{
+    border: none;
+    margin: 0 auto;
+  }
+}
