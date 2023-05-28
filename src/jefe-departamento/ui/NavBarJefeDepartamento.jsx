@@ -10,7 +10,9 @@ export const NavBarJefeDepartamento = () => {
 
                 <NavLink
                     className={({ isActive }) => `nav-item nav-link navbar__link ${isActive ? 'active' : ''}`}
+                    /* className="nav-item nav-link navbar__link active" */
                     to="/menu-jefe-departamento/menu-cursos/agregar"
+                    
                 >
                     Agregar
                 </NavLink>

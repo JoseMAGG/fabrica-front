@@ -1,158 +1,230 @@
-import { useForm } from "../hooks/useForm";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-import "./index.css"
+import Swal from 'sweetalert2';
+
+
+import { JefeDepartamentoContext } from "../context/JefeDepartamentoContext";
+import { postCursos } from "../helpers/api";
+import "./index.css";
+
 
 export const AgregarCurso = () => {
 
     const {
+        formState,
         onInputChange,
         onResetForm,
-        codigoDeMateria,
-        pregrado,
-        admiteGruposEspejo,
-        nombreDelCurso,
+        onSelectChange,
+        handleChexbox,
+        materia,
+        programaAcademico,
         versionPensum,
+        creditos,
         nivelAcademico,
-        creditosAcademicos,
         intensidadHoraria,
-        sede
-    } = useForm({
-            "codigoDeMateria": "",
-            "pregrado": "",
-            "admiteGruposEspejo": "",
-            "nombreDelCurso": "",
-            "versionPensum": "",
-            "nivelAcademico": "",
-            "creditosAcademicos": "",
-            "intensidadHoraria": "",
-            "sede": ""
-        });
+        sede,
+        gruposEspejo,
+        validable,
+        obligatorio,
+        habilitable,
+    } = useContext(JefeDepartamentoContext);
+
+    const navigate = useNavigate();
+
+    const returnMenu = () => {
+        navigate('/menu-jefe-departamento')
+    }
 
     const onSubmitForm = (event) => {
         event.preventDefault();
-        onResetForm();
+        if (postCursos(formState)) {
+            postCursos(formState);
+            onResetForm();
+            Swal.fire({
+                icon: 'success',
+                title: `Creación de curso exitosa`,
+                text: `El curso de: ${materia} fue creado`,
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `El codigo del curso: ${materia} no es valido`,
+              })
+        }
     }
 
     return (
-        <form className="form-cursos">
+        <>
+            <form className="form-cursos" onSubmit={onSubmitForm}>
 
-            <div className="form-cursos__div d-flex row">
-                <div className="col-6 d-grid">
-                    <label className="form-cursos__div-label"><b>Código de materia: </b></label>
-                    <label className="form-cursos__div-label" for="lang"><b>Pregrado: </b></label>
-                    <label className="form-cursos__div-label"><b>Admite grupos espejos: </b></label>
-                    <label className="form-cursos__div-label"><b>Nombre del curso: </b></label>
-                    <label className="form-cursos__div-label" for="lang"><b>Versión del pensum: </b></label>
-                    <label className="form-cursos__div-label" for="lang"><b>Nivel académico: </b></label>
-                    <label className="form-cursos__div-label"><b>Creditos académicos: </b></label>
-                    <label className="form-cursos__div-label"><b>Intensidad horaria: </b></label>
-                    <label className="form-cursos__div-label" for="lang"><b>Cede: </b></label>
+                <div className="form-cursos__div d-flex row">
+                    <div className="col-6 d-grid">
+                        <label className="form-cursos__div-label"><b>Código de materia: </b></label>
+                        <label className="form-cursos__div-label" for="lang"><b>programaAcademico: </b></label>
+                        <label className="form-cursos__div-label" for="lang"><b>Versión del pensum: </b></label>
+                        <label className="form-cursos__div-label" for="lang"><b>Nivel académico: </b></label>
+                        <label className="form-cursos__div-label"><b>Creditos académicos: </b></label>
+                        <label className="form-cursos__div-label"><b>Intensidad horaria: </b></label>
+                        <label className="form-cursos__div-label" for="lang"><b>Sede: </b></label>
+                        <label className="form-cursos__div-label"><b>Admite grupos espejos: </b></label>
+                        <label className="form-cursos__div-label"><b>Validable: </b></label>
+                        <label className="form-cursos__div-label"><b>Obligatorio: </b></label>
+                        <label className="form-cursos__div-label"><b>Habilitable: </b></label>
+                    </div>
+
+                    <div className="col-6">
+                        <div className="form-cursos__div-inner">
+                            <input
+                                className=""
+                                type="number"
+                                name="materia"
+                                value={materia}
+                                onChange={onInputChange}
+                                required="true"
+                            />
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <select name="programaAcademico" value={programaAcademico} onChange={onInputChange} required="true">
+                                <option name="programaAcademico" value="" selected></option>
+                                <option name="programaAcademico" value="Ing Sistemas">Ingeniería Sistemas</option>
+                                <option name="programaAcademico" value="Ing Electronica">Ingeniería Electronica</option>
+                                <option name="programaAcademico" value="Ing Electrica">Ingeniería Electrica</option>
+                                <option name="programaAcademico" value="Ing Industrial">Ingeniería Industrial</option>
+                            </select>
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <select name="versionPensum" value={versionPensum} onChange={(e) => onSelectChange(e, true)} required="true">
+                                <option name="" selected></option>
+                                <option name="3">1</option>
+                                <option name="3">2</option>
+                                <option name="3">3</option>
+                                <option name="4">4</option>
+                                <option name="5">5</option>
+                            </select>
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <select name="nivelAcademico" value={nivelAcademico} onChange={(e) => onSelectChange(e, true)} required="true">
+                                <option name="" selected></option>
+                                <option name="1">1</option>
+                                <option name="2">2</option>
+                                <option name="3">3</option>
+                                <option name="4">4</option>
+                                <option name="5">5</option>
+                                <option name="6">6</option>
+                                <option name="7">7</option>
+                                <option name="8">8</option>
+                                <option name="9">9</option>
+                                <option name="10">10</option>
+                            </select>
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <input
+                                className=""
+                                type="number"
+                                name="creditos"
+                                value={creditos}
+                                onChange={onInputChange}
+                                required="true"
+                            />
+                        </div>
+
+
+                        <div className="form-cursos__div-inner">
+
+                            <input
+                                className=""
+                                type="number"
+                                name="intensidadHoraria"
+                                value={intensidadHoraria}
+                                onChange={onInputChange}
+                                required="true"
+                            />
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <select name="sede" value={sede} onChange={onInputChange} required="true">
+                                <option name="" selected></option>
+                                <option name="Ciudadela Universitaria">Ciudadela Universitaria</option>
+                                <option name="Cede Robledo">Sede Robledo</option>
+                                <option name="Virtual">Virtual</option>
+                            </select>
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <input
+                                className="mycheck"
+                                type="checkbox"
+                                name="gruposEspejo"
+                                checked={gruposEspejo}
+                                onChange={handleChexbox}
+                            />
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <input
+                                className="mycheck"
+                                type="checkbox"
+                                name="validable"
+                                checked={validable}
+                                onChange={handleChexbox}
+                            />
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <input
+                                className="mycheck"
+                                type="checkbox"
+                                name="obligatorio"
+                                checked={obligatorio}
+                                onChange={handleChexbox}
+                            />
+                        </div>
+
+                        <div className="form-cursos__div-inner">
+
+                            <input
+                                className="mycheck"
+                                type="checkbox"
+                                name="habilitable"
+                                checked={habilitable}
+                                onChange={handleChexbox}
+                            />
+                        </div>
+
+                    </div>
                 </div>
 
-                <div className="col-6">
-                    <div className="form-cursos__div-inner">
-                        <input
-                            className=""
-                            type="text"
-                            name="codigoDeMateria"
-                            value={codigoDeMateria}
-                            onChange={onInputChange}
-                        />
-                    </div>
+                <div className="d-flex justify-content-between">
+                    <button
+                        className="form_button"
+                        onClick={returnMenu}
+                    >Regresar</button>
 
-                    <div className="form-cursos__div-inner">
-
-                        <select name="languages" id="lang">
-                            <option name="pregrado" value={pregrado} selected></option>
-                            <option name="pregrado" value={pregrado}>Ingeniería de Sistemas</option>
-                            <option name="pregrado" value={pregrado}>Ingeniería de Electronica</option>
-                        </select>
-                    </div>
-
-                    <div className="form-cursos__div-inner">
-
-                        <input
-                            className="mycheck"
-                            type="checkbox"
-                            name="admiteGruposEspejo"
-                            value={admiteGruposEspejo}
-                            onChange={onInputChange}
-                        />
-                    </div>
-
-                    <div className="form-cursos__div-inner">
-
-                        <input
-                            className=""
-                            type="text"
-                            name="nombreDelCurso"
-                            value={nombreDelCurso}
-                            onChange={onInputChange}
-                        />
-                    </div>
-
-                    <div className="form-cursos__div-inner">
-
-                        <select name="versionPensum" value={versionPensum} id="lang">
-                            <option name="versionPensum" value={versionPensum} selected></option>
-                            <option name="versionPensum" value={versionPensum}>3</option>
-                            <option name="versionPensum" value={versionPensum}>4</option>
-                            <option name="versionPensum" value={versionPensum}>5</option>
-                        </select>
-                    </div>
-
-                    <div className="form-cursos__div-inner">
-
-                        <select name="nivelAcademico" value={nivelAcademico} id="lang">
-                            <option name="nivelAcademico" value={nivelAcademico} selected></option>
-                            <option name="nivelAcademico" value={nivelAcademico}>1</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>2</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>3</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>4</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>5</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>6</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>7</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>8</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>9</option>
-                            <option name="nivelAcademico" value={nivelAcademico}>10</option>
-                        </select>
-                    </div>
-
-                    <div className="form-cursos__div-inner">
-
-                        <input
-                            className=""
-                            type="text"
-                            name="creditosAcademicos"
-                            value={creditosAcademicos}
-                            onChange={onInputChange}
-                        />
-                    </div>
-
-
-                    <div className="form-cursos__div-inner">
-
-                        <input
-                            className=""
-                            type="text"
-                            name="intensidadHoraria"
-                            value={intensidadHoraria}
-                            onChange={onInputChange}
-                        />
-                    </div>
-
-                    <div className="form-cursos__div-inner">
-
-                        <select name="sede" value={sede} id="lang">
-                            <option name="sede" value={sede} selected></option>
-                            <option name="sede" value={sede}>Ciudadela Universitaria</option>
-                            <option name="sede" value={sede}>Cede Robledo</option>
-                            <option name="sede" value={sede}>Virtual</option>
-                        </select>
-                    </div>
+                    <button
+                        className="form_button"
+                    /* onClick={onSubmitForm} */
+                    >Crear Curso</button>
                 </div>
-            </div>
-        </form>
+
+            </form>
+
+
+        </>
+
 
     )
 }

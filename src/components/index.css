@@ -2,6 +2,16 @@
     width: 40rem;
     display: grid;
     justify-content: left;
+    border: 2px solid var(--main-color);
+    padding: 30px 40px 30px 40px;
+    height: 35rem;
+}
+
+.form-curso-delete {
+    width: 40rem;
+    border: 2px solid var(--main-color);
+    padding: 30px 40px 30px 40px;
+    height: 35rem;
 }
 
 .form-cursos__div-label {

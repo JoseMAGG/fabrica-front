@@ -7,8 +7,7 @@ import { JefeDepartamentoRoutes } from "../jefe-departamento/routes/JefeDepartam
 import { Grupos } from "../jefe-departamento/pages/Grupos";
 import { ModificarCurso } from "../components/ModificarCurso";
 import { AgregarCurso } from "../components/AgregarCurso";
-import { NavBarJefeDepartamento } from "../jefe-departamento/ui/NavBarJefeDepartamento";
-import { NavButtons } from "../components/NavButtons";
+
 
 export const AppRouter = () => {
     return (
