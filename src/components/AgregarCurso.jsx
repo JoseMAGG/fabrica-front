@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 
 import { JefeDepartamentoContext } from "../context/JefeDepartamentoContext";
-import { postCursos } from "../helpers/api";
+import { postCursos } from "../services/api";
 import "./index.css";
 
 
@@ -38,21 +38,9 @@ export const AgregarCurso = () => {
 
     const onSubmitForm = (event) => {
         event.preventDefault();
-        if (postCursos(formState)) {
-            postCursos(formState);
-            onResetForm();
-            Swal.fire({
-                icon: 'success',
-                title: `Creación de curso exitosa`,
-                text: `El curso de: ${materia} fue creado`,
-            })
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `El codigo del curso: ${materia} no es valido`,
-              })
-        }
+        postCursos(formState, materia);
+        onResetForm();
+
     }
 
     return (
@@ -88,18 +76,19 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="programaAcademico" value={programaAcademico} onChange={onInputChange} required="true">
+                            <select name="programaAcademico" value={programaAcademico} defaultValue="" onChange={onInputChange} required="true">
                                 <option name="programaAcademico" value="" selected></option>
                                 <option name="programaAcademico" value="Ing Sistemas">Ingeniería Sistemas</option>
                                 <option name="programaAcademico" value="Ing Electronica">Ingeniería Electronica</option>
                                 <option name="programaAcademico" value="Ing Electrica">Ingeniería Electrica</option>
                                 <option name="programaAcademico" value="Ing Industrial">Ingeniería Industrial</option>
+                                <option name="programaAcademico" value="Ing Civil">Ingeniería Civil</option>
                             </select>
                         </div>
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="versionPensum" value={versionPensum} onChange={(e) => onSelectChange(e, true)} required="true">
+                            <select name="versionPensum" value={versionPensum} defaultValue="" onChange={(e) => onSelectChange(e, true)} required="true">
                                 <option name="" selected></option>
                                 <option name="3">1</option>
                                 <option name="3">2</option>
@@ -111,7 +100,7 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="nivelAcademico" value={nivelAcademico} onChange={(e) => onSelectChange(e, true)} required="true">
+                            <select name="nivelAcademico" value={nivelAcademico} defaultValue="" onChange={(e) => onSelectChange(e, true)} required="true">
                                 <option name="" selected></option>
                                 <option name="1">1</option>
                                 <option name="2">2</option>
@@ -153,7 +142,7 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="sede" value={sede} onChange={onInputChange} required="true">
+                            <select name="sede" value={sede} defaultValue="" onChange={onInputChange} required="true">
                                 <option name="" selected></option>
                                 <option name="Ciudadela Universitaria">Ciudadela Universitaria</option>
                                 <option name="Cede Robledo">Sede Robledo</option>

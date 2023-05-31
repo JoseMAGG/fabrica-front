@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { JefeDepartamentoContext } from "../context/JefeDepartamentoContext";
-import { putCursos } from "../helpers/api";
+
 import "./index.css";
+import { putCursos } from "../services/api";
 
 
 export const ModificarCurso = () => {
