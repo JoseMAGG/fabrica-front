@@ -25,21 +25,16 @@ export const EliminarCurso = () => {
         navigate('/menu-jefe-departamento')
     }
 
-    const onSubmitForm = () => {
+    const onSubmitForm = (event) => {
+        event.preventDefault();
         const { materia, programaAcademico, versionPensum } = formState;
-        console.log(materia, programaAcademico, versionPensum);
+
         deleteCursos({
             "idMateria": materia,
             "programaAcademico": programaAcademico,
             "versionPensum": versionPensum,
         });
         onResetForm();
-        Swal.fire({
-            icon: 'success',
-            title: `Eliminación de  curso exitosa`,
-            text: `El curso de: ${materia} fue eliminado`,
-        })
-        /* console.log(idMateria) */
     }
 
     return (
@@ -73,6 +68,7 @@ export const EliminarCurso = () => {
                                 <option name="programaAcademico" value="Ing Electronica">Ingeniería Electronica</option>
                                 <option name="programaAcademico" value="Ing Electrica">Ingeniería Electrica</option>
                                 <option name="programaAcademico" value="Ing Industrial">Ingeniería Industrial</option>
+                                <option name="programaAcademico" value="Ing Civil">Ingeniería Civil</option>
                             </select>
                         </div>
 
@@ -91,7 +87,7 @@ export const EliminarCurso = () => {
                     </div>
                 </div>
 
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between form-button">
                     <button
                         className="form_button"
                         onClick={returnMenu}

@@ -36,3 +36,31 @@
 .mycheck:active {
     background-color: green;
 }
+
+.form-button {
+    margin-top: 24rem;
+}
+
+
+.div-cursos-creados {
+    width: 60rem;
+    display: grid;
+    border: 2px solid var(--main-color);
+    padding: 30px 40px 30px 40px;
+    height: 18rem;
+}
+
+.div-cursos-creados__label {
+    color: var(--main-color);
+    height: 1rem;
+    
+}
+
+.div-cursos-creados__row {
+    background: #4cb236;
+}
+
+.div-cursos-creados__div {
+    height: 2rem;
+}
+

@@ -36,8 +36,9 @@ export const ModificarCurso = () => {
 
     }
 
-    const onSubmitForm = () => {
-        putCursos(formState);
+    const onSubmitForm = (event) => {
+        event.preventDefault();
+        putCursos(formState, materia);
         onResetForm();
         Swal.fire({
             icon: 'success',
@@ -86,6 +87,7 @@ export const ModificarCurso = () => {
                                 <option name="programaAcademico" value="Ing Electronica">Ingeniería Electronica</option>
                                 <option name="programaAcademico" value="Ing Electrica">Ingeniería Electrica</option>
                                 <option name="programaAcademico" value="Ing Industrial">Ingeniería Industrial</option>
+                                <option name="programaAcademico" value="Ing Civil">Ingeniería Civil</option>
                             </select>
                         </div>
 

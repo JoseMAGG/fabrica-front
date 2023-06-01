@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 
 export const getCursos = async () => {
 
-    const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/find-all`;
+    const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/cursos/find-all`;
     const resp = await fetch(url);
 
     const cursos = await resp.json();
@@ -38,7 +38,7 @@ export const postCursos = async (curso, materia) => {
     }
 }
 
-export const putCursos = async (curso) => {
+export const putCursos = async (curso, materia) => {
 
     const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/cursos/update`;
 
@@ -69,6 +69,8 @@ export const putCursos = async (curso) => {
 
 export const deleteCursos = async (curso) => {
 
+    const {idMateria} = curso;
+
     const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/cursos/delete`;
 
     const requestOptions = {
@@ -83,14 +85,14 @@ export const deleteCursos = async (curso) => {
         Swal.fire({
             icon: 'success',
             title: `Eliminación de curso exitosa`,
-            text: `El curso de: ${materia} fue eliminado`,
+            text: `El curso de: ${idMateria} fue eliminado`,
         })
         return resp;
     } else {
         const message = Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: `El codigo del curso: ${materia} no es valido`,
+            text: `El codigo del curso: ${idMateria} no es valido`,
         })
         throw new Error(message);
     }

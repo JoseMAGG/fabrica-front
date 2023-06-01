@@ -1,9 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Swal from 'sweetalert2';
-
-
 import { JefeDepartamentoContext } from "../context/JefeDepartamentoContext";
 import { postCursos } from "../services/api";
 import "./index.css";

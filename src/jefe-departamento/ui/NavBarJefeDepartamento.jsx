@@ -1,7 +1,13 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
+import { getCursos } from "../../services/api";
 
 export const NavBarJefeDepartamento = () => {
+
+    /* const handleButtonCursos = (event) => {
+        event.preventDefault();
+        getCursos();
+
+    } */
 
     return (
         <nav className="navbar navbar-expand-sm">
@@ -29,6 +35,14 @@ export const NavBarJefeDepartamento = () => {
                     to="/menu-jefe-departamento/menu-cursos/eliminar"
                 >
                     Eliminar
+                </NavLink>
+
+                <NavLink
+                    className={({ isActive }) => `nav-item nav-link navbar__link ${isActive ? 'active' : ''}`}
+                    to="/menu-jefe-departamento/menu-cursos/cursos-creados"
+                    /* onClick={handleButtonCursos} */
+                >
+                    Cursos creados
                 </NavLink>
             </div>
 
