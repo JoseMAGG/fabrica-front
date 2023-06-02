@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { JefeDepartamentoContext } from "../context/JefeDepartamentoContext";
@@ -26,6 +26,10 @@ export const AgregarCurso = () => {
         obligatorio,
         habilitable,
     } = useContext(JefeDepartamentoContext);
+
+    useEffect(()=>{
+        onResetForm();
+    },[])
 
     const navigate = useNavigate();
 
@@ -66,6 +70,7 @@ export const AgregarCurso = () => {
                                 type="number"
                                 name="materia"
                                 value={materia}
+                                min={0}
                                 onChange={onInputChange}
                                 required={true}
                             />
@@ -74,41 +79,41 @@ export const AgregarCurso = () => {
                         <div className="form-cursos__div-inner">
 
                             <select name="programaAcademico" value={programaAcademico} onChange={onInputChange} required={true}>
-                                <option name="programaAcademico" value=""></option>
-                                <option name="programaAcademico" value="Ing Sistemas">Ingeniería Sistemas</option>
-                                <option name="programaAcademico" value="Ing Electronica">Ingeniería Electronica</option>
-                                <option name="programaAcademico" value="Ing Electrica">Ingeniería Electrica</option>
-                                <option name="programaAcademico" value="Ing Industrial">Ingeniería Industrial</option>
-                                <option name="programaAcademico" value="Ing Civil">Ingeniería Civil</option>
+                                <option name="programaAcademicoNull" value=""></option>
+                                <option name="programaAcademicoIngSistemas" value="Ing Sistemas">Ingeniería Sistemas</option>
+                                <option name="programaAcademicoIngElectronica" value="Ing Electronica">Ingeniería Electronica</option>
+                                <option name="programaAcademicoIngElectrica" value="Ing Electrica">Ingeniería Electrica</option>
+                                <option name="programaAcademicoIngIndustrial" value="Ing Industrial">Ingeniería Industrial</option>
+                                <option name="programaAcademicoIngCivil" value="Ing Civil">Ingeniería Civil</option>
                             </select>
                         </div>
 
                         <div className="form-cursos__div-inner">
 
                             <select name="versionPensum" value={versionPensum}onChange={(e) => onSelectChange(e, true)} required={true}>
-                                <option name=""></option>
-                                <option name="3">1</option>
-                                <option name="3">2</option>
-                                <option name="3">3</option>
-                                <option name="4">4</option>
-                                <option name="5">5</option>
+                                <option value=""></option>
+                                <option value="3">1</option>
+                                <option value="3">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
 
                         <div className="form-cursos__div-inner">
 
                             <select name="nivelAcademico" value={nivelAcademico} onChange={(e) => onSelectChange(e, true)} required={true}>
-                                <option name=""></option>
-                                <option name="1">1</option>
-                                <option name="2">2</option>
-                                <option name="3">3</option>
-                                <option name="4">4</option>
-                                <option name="5">5</option>
-                                <option name="6">6</option>
-                                <option name="7">7</option>
-                                <option name="8">8</option>
-                                <option name="9">9</option>
-                                <option name="10">10</option>
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
 
@@ -119,6 +124,7 @@ export const AgregarCurso = () => {
                                 type="number"
                                 name="creditos"
                                 value={creditos}
+                                min={0}
                                 onChange={onInputChange}
                                 required={true}
                             />
@@ -131,6 +137,7 @@ export const AgregarCurso = () => {
                                 className=""
                                 type="number"
                                 name="intensidadHoraria"
+                                min={0}
                                 value={intensidadHoraria}
                                 onChange={onInputChange}
                                 required={true}
@@ -140,10 +147,10 @@ export const AgregarCurso = () => {
                         <div className="form-cursos__div-inner">
 
                             <select name="sede" value={sede} onChange={onInputChange} required={true}>
-                                <option name=""></option>
-                                <option name="Ciudadela Universitaria">Ciudadela Universitaria</option>
-                                <option name="Cede Robledo">Sede Robledo</option>
-                                <option name="Virtual">Virtual</option>
+                                <option value=""></option>
+                                <option value="Ciudadela Universitaria">Ciudadela Universitaria</option>
+                                <option value="Sede Robledo">Sede Robledo</option>
+                                <option value="Virtual">Virtual</option>
                             </select>
                         </div>
 
@@ -193,8 +200,8 @@ export const AgregarCurso = () => {
 
                     </div>
                 </div>
-
-                <div className="d-flex justify-content-between">
+            </form>
+            <div className="d-flex justify-content-between">
                     <button
                         className="form_button"
                         onClick={returnMenu}
@@ -205,12 +212,6 @@ export const AgregarCurso = () => {
                     /* onClick={onSubmitForm} */
                     >Crear Curso</button>
                 </div>
-
-            </form>
-
-
         </>
-
-
     )
 }

@@ -13,21 +13,31 @@ export const CursoItem = ({
     validable,
     obligatorio,
     habilitable,
-    onDeleteCurso
+    btnMsg = "Eliminar Curso",
+    onClick
 }) => {
 
-    const handleDeleteCurso = (event) => {
+    const handleActionClick = (event) => {
         event.preventDefault();
-        onDeleteCurso({
-            "idMateria": idMateria,
-            "programaAcademico": programaAcademico,
-            "versionPensum": versionPensum,
+        onClick({
+            nombre,
+            idMateria,
+            lineaEnfasis,
+            programaAcademico,
+            versionPensum,
+            creditos,
+            nivelAcademico,
+            intensidadHoraria,
+            sede,
+            gruposEspejo,
+            validable,
+            obligatorio,
+            habilitable,
         });
     }
 
     return (
         <div className="div-cursos-creados">
-
 
             <div className="div-cursos-creados__div row">
                 <div className="div-cursos-creados__row">
@@ -66,17 +76,17 @@ export const CursoItem = ({
                 <div className="col-3 d-grid div-cursos-creados__col">
                     <label><b>{intensidadHoraria}</b></label>
                     <label><b>{sede}</b></label>
-                    <label><b>{gruposEspejo == true ? "Sí" : "No"}</b></label>
-                    <label><b>{validable == true ? "Sí" : "No"}</b></label>
-                    <label><b>{obligatorio == true ? "Sí" : "No"}</b></label>
-                    <label><b>{habilitable == true ? "Sí" : "No"}</b></label>
+                    <label><b>{gruposEspejo ? "Sí" : "No"}</b></label>
+                    <label><b>{validable ? "Sí" : "No"}</b></label>
+                    <label><b>{obligatorio ? "Sí" : "No"}</b></label>
+                    <label><b>{habilitable ? "Sí" : "No"}</b></label>
                 </div>
 
                 <button
                     className="form_button"
-                    onClick={handleDeleteCurso}
+                    onClick={handleActionClick}
                 >
-                    Eliminar curso
+                    {btnMsg}
                 </button>
 
 

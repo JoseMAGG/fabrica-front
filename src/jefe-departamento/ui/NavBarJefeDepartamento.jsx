@@ -29,13 +29,12 @@ export const NavBarJefeDepartamento = () => {
                     Eliminar
                 </NavLink>
 
-                <NavLink
+                {/* <NavLink
                     className={({ isActive }) => `nav-item nav-link navbar__link ${isActive ? 'active' : ''}`}
                     to="/menu-jefe-departamento/menu-cursos/cursos-creados"
-                /* onClick={handleButtonCursos} */
                 >
                     Cursos creados
-                </NavLink>
+                </NavLink> */}
 
             </div>
 

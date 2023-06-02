@@ -1,9 +1,8 @@
 .form-cursos {
     width: 65rem;
-    display: grid;
+    /* display: grid; */
     border: 2px solid var(--main-color);
     padding: 30px 40px 30px 40px;
-    height: 35rem;
 }
 
 
