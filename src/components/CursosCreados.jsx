@@ -4,7 +4,7 @@ import { CursoItem } from "./CursoItem";
 
 export const CursosCreados = () => {
 
-    const [cursos, setCursos] = useState([]);
+    let [cursos, setCursos] = useState([]);
 
     const cursosCreados = async () => {
         const newCursos = await getCursos();
@@ -14,36 +14,29 @@ export const CursosCreados = () => {
     useEffect(() => {
         cursosCreados();
     }, []);
+    useEffect(() => {}, [cursos])
 
 
     const onDeleteCurso = async (curso, index) => {
         const resp = await deleteCursos(curso);
         if(resp.ok) {
-            console.log(resp, index)
-            setCursos(cursos.splice(index, 1))
+            const auxCursos = [...cursos]
+            auxCursos.splice(index,1)
+            setCursos(auxCursos)
         }
-        console.log(resp)
-        /* setCursos(resp); */
     }
 
-    useEffect(() => {
-        onDeleteCurso()
-    }, [cursos]);
-
     return (
-        <>
-            <div>
-                {
-                    cursos.map((curso, index) => (
-                        <CursoItem
-                            key={curso}
-                            onDeleteCurso={(curso)=> onDeleteCurso(curso, index)}
-                            {...curso}
-                            {...curso.materia}
-                        />
-                    ))
-                }
-            </div>
-        </>
+        <div>
+            { cursos.map((curso, index) => (
+                <div key={index}>
+                    <CursoItem
+                        onDeleteCurso={(curso)=> onDeleteCurso(curso, index)}
+                        {...curso}
+                        {...curso.materia}
+                    />
+                </div>
+                ))}
+        </div>
     )
 }
