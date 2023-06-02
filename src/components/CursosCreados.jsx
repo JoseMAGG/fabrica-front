@@ -14,15 +14,15 @@ export const CursosCreados = () => {
     useEffect(() => {
         cursosCreados();
     }, []);
-    useEffect(() => {}, [cursos])
+    useEffect(() => { }, [cursos])
 
-    useEffect(() => {}, [cursos])
+    useEffect(() => { }, [cursos])
 
     const onDeleteCurso = async (curso, index) => {
         const resp = await deleteCursos(curso);
-        if(resp.ok) {
+        if (resp.ok) {
             const auxCursos = [...cursos]
-            auxCursos.splice(index,1)
+            auxCursos.splice(index, 1)
             setCursos(auxCursos)
         }
     }
@@ -32,12 +32,14 @@ export const CursosCreados = () => {
             <div className="container-cursos-creados">
                 {
                     cursos.map((curso, index) => (
-                        <CursoItem
-                            key={curso}
-                            onDeleteCurso={(curso)=> onDeleteCurso(curso, index)}
-                            {...curso}
-                            {...curso.materia}
-                        />
+                        <div key={index}>
+                            <CursoItem
+                                onDeleteCurso={(curso) => onDeleteCurso(curso, index)}
+                                {...curso}
+                                {...curso.materia}
+                            />
+                        </div>
+
                     ))
                 }
 
