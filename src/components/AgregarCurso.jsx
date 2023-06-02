@@ -47,12 +47,12 @@ export const AgregarCurso = () => {
                 <div className="form-cursos__div d-flex row">
                     <div className="col-6 d-grid">
                         <label className="form-cursos__div-label"><b>Código de materia: </b></label>
-                        <label className="form-cursos__div-label" for="lang"><b>programaAcademico: </b></label>
-                        <label className="form-cursos__div-label" for="lang"><b>Versión del pensum: </b></label>
-                        <label className="form-cursos__div-label" for="lang"><b>Nivel académico: </b></label>
+                        <label className="form-cursos__div-label"><b>programaAcademico: </b></label>
+                        <label className="form-cursos__div-label"><b>Versión del pensum: </b></label>
+                        <label className="form-cursos__div-label"><b>Nivel académico: </b></label>
                         <label className="form-cursos__div-label"><b>Creditos académicos: </b></label>
                         <label className="form-cursos__div-label"><b>Intensidad horaria: </b></label>
-                        <label className="form-cursos__div-label" for="lang"><b>Sede: </b></label>
+                        <label className="form-cursos__div-label"><b>Sede: </b></label>
                         <label className="form-cursos__div-label"><b>Admite grupos espejos: </b></label>
                         <label className="form-cursos__div-label"><b>Validable: </b></label>
                         <label className="form-cursos__div-label"><b>Obligatorio: </b></label>
@@ -67,14 +67,14 @@ export const AgregarCurso = () => {
                                 name="materia"
                                 value={materia}
                                 onChange={onInputChange}
-                                required="true"
+                                required={true}
                             />
                         </div>
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="programaAcademico" value={programaAcademico} defaultValue="" onChange={onInputChange} required="true">
-                                <option name="programaAcademico" value="" selected></option>
+                            <select name="programaAcademico" value={programaAcademico} defaultValue="" onChange={onInputChange} required={true}>
+                                <option name="programaAcademico" value=""></option>
                                 <option name="programaAcademico" value="Ing Sistemas">Ingeniería Sistemas</option>
                                 <option name="programaAcademico" value="Ing Electronica">Ingeniería Electronica</option>
                                 <option name="programaAcademico" value="Ing Electrica">Ingeniería Electrica</option>
@@ -85,8 +85,8 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="versionPensum" value={versionPensum} defaultValue="" onChange={(e) => onSelectChange(e, true)} required="true">
-                                <option name="" selected></option>
+                            <select name="versionPensum" value={versionPensum} defaultValue="" onChange={(e) => onSelectChange(e, true)} required={true}>
+                                <option name=""></option>
                                 <option name="3">1</option>
                                 <option name="3">2</option>
                                 <option name="3">3</option>
@@ -97,8 +97,8 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="nivelAcademico" value={nivelAcademico} defaultValue="" onChange={(e) => onSelectChange(e, true)} required="true">
-                                <option name="" selected></option>
+                            <select name="nivelAcademico" value={nivelAcademico} defaultValue="" onChange={(e) => onSelectChange(e, true)} required={true}>
+                                <option name=""></option>
                                 <option name="1">1</option>
                                 <option name="2">2</option>
                                 <option name="3">3</option>
@@ -120,7 +120,7 @@ export const AgregarCurso = () => {
                                 name="creditos"
                                 value={creditos}
                                 onChange={onInputChange}
-                                required="true"
+                                required={true}
                             />
                         </div>
 
@@ -133,14 +133,14 @@ export const AgregarCurso = () => {
                                 name="intensidadHoraria"
                                 value={intensidadHoraria}
                                 onChange={onInputChange}
-                                required="true"
+                                required={true}
                             />
                         </div>
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="sede" value={sede} defaultValue="" onChange={onInputChange} required="true">
-                                <option name="" selected></option>
+                            <select name="sede" value={sede} defaultValue="" onChange={onInputChange} required={true}>
+                                <option name=""></option>
                                 <option name="Ciudadela Universitaria">Ciudadela Universitaria</option>
                                 <option name="Cede Robledo">Sede Robledo</option>
                                 <option name="Virtual">Virtual</option>

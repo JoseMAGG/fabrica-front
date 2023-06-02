@@ -4,7 +4,7 @@ import { CursoItem } from "./CursoItem";
 
 export const CursosCreados = () => {
 
-    const [cursos, setCursos] = useState([]);
+    let [cursos, setCursos] = useState([]);
 
     const cursosCreados = async () => {
         const newCursos = await getCursos();
@@ -14,6 +14,7 @@ export const CursosCreados = () => {
     useEffect(() => {
         cursosCreados();
     }, []);
+    useEffect(() => {}, [cursos])
 
     useEffect(() => {}, [cursos])
 
@@ -25,10 +26,6 @@ export const CursosCreados = () => {
             setCursos(auxCursos)
         }
     }
-
-    useEffect(() => {
-        onDeleteCurso()
-    }, [cursos]);
 
     return (
         <>
