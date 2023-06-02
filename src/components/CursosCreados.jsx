@@ -15,15 +15,15 @@ export const CursosCreados = () => {
         cursosCreados();
     }, []);
 
+    useEffect(() => {}, [cursos])
 
     const onDeleteCurso = async (curso, index) => {
         const resp = await deleteCursos(curso);
         if(resp.ok) {
-            console.log(resp, index)
-            setCursos(cursos.splice(index, 1))
+            const auxCursos = [...cursos]
+            auxCursos.splice(index,1)
+            setCursos(auxCursos)
         }
-        console.log(resp)
-        /* setCursos(resp); */
     }
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export const CursosCreados = () => {
 
     return (
         <>
-            <div>
+            <div className="container-cursos-creados">
                 {
                     cursos.map((curso, index) => (
                         <CursoItem
@@ -43,6 +43,8 @@ export const CursosCreados = () => {
                         />
                     ))
                 }
+
+                <h1 className="d-flex justify-content-center">{cursos.length == 0 ? "No hay cursos creados" : ""}</h1>
             </div>
         </>
     )

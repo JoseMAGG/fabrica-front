@@ -56,13 +56,22 @@
     text-decoration: none;
 }
 
-.navbar__link:hover {
+#root > div > nav > div > a:nth-child(1) {
     color: #ffffff;
 }
 
-.navbar__link::focus {
+#root > div > nav > div > a:nth-child(2) {
     color: #ffffff;
 }
+
+#root > div > nav > div > a:nth-child(3) {
+    color: #ffffff;
+}
+
+#root > div > nav > div > a:nth-child(4) {
+    color: #ffffff;
+}
+
 
 .active {
     background-color: var(--main-color);
