@@ -1,13 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { getCursos } from "../../services/api";
 
 export const NavBarJefeDepartamento = () => {
-
-    /* const handleButtonCursos = (event) => {
-        event.preventDefault();
-        getCursos();
-
-    } */
 
     return (
         <nav className="navbar navbar-expand-md">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { deleteCursos, getCursos } from "../services/api"
+import { deleteCursos, getAllCursos } from "../services/cursoService"
 import { CursoItem } from "./CursoItem";
 
 export const CursosCreados = () => {
@@ -7,15 +7,13 @@ export const CursosCreados = () => {
     let [cursos, setCursos] = useState([]);
 
     const cursosCreados = async () => {
-        const newCursos = await getCursos();
+        const newCursos = await getAllCursos();
         setCursos(newCursos);
     }
 
     useEffect(() => {
         cursosCreados();
     }, []);
-    useEffect(() => { }, [cursos])
-
     useEffect(() => { }, [cursos])
 
     const onDeleteCurso = async (curso, index) => {
@@ -28,23 +26,19 @@ export const CursosCreados = () => {
     }
 
     return (
-        <>
-            <div className="container-cursos-creados">
-                {
-                    cursos.map((curso, index) => (
-                        <div key={index}>
-                            <CursoItem
-                                onDeleteCurso={(curso) => onDeleteCurso(curso, index)}
-                                {...curso}
-                                {...curso.materia}
-                            />
-                        </div>
-
-                    ))
-                }
-
-                <h1 className="d-flex justify-content-center">{cursos.length == 0 ? "No hay cursos creados" : ""}</h1>
-            </div>
-        </>
+        <div className="container-cursos-creados">
+            {
+                cursos.map((curso, index) => (
+                    <div key={index}>
+                        <CursoItem
+                            onDeleteCurso={(curso) => onDeleteCurso(curso, index)}
+                            {...curso}
+                            {...curso.materia}
+                        />
+                    </div>
+                ))
+            }
+            <h1 className="d-flex justify-content-center">{cursos.length == 0 ? "No hay cursos creados" : ""}</h1>
+        </div>
     )
 }

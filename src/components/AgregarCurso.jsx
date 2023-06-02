@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { JefeDepartamentoContext } from "../context/JefeDepartamentoContext";
-import { postCursos } from "../services/api";
+import { postCursos } from "../services/cursoService";
 import "./index.css";
 
 
@@ -73,7 +73,7 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="programaAcademico" value={programaAcademico} defaultValue="" onChange={onInputChange} required={true}>
+                            <select name="programaAcademico" value={programaAcademico} onChange={onInputChange} required={true}>
                                 <option name="programaAcademico" value=""></option>
                                 <option name="programaAcademico" value="Ing Sistemas">Ingeniería Sistemas</option>
                                 <option name="programaAcademico" value="Ing Electronica">Ingeniería Electronica</option>
@@ -85,7 +85,7 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="versionPensum" value={versionPensum} defaultValue="" onChange={(e) => onSelectChange(e, true)} required={true}>
+                            <select name="versionPensum" value={versionPensum}onChange={(e) => onSelectChange(e, true)} required={true}>
                                 <option name=""></option>
                                 <option name="3">1</option>
                                 <option name="3">2</option>
@@ -97,7 +97,7 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="nivelAcademico" value={nivelAcademico} defaultValue="" onChange={(e) => onSelectChange(e, true)} required={true}>
+                            <select name="nivelAcademico" value={nivelAcademico} onChange={(e) => onSelectChange(e, true)} required={true}>
                                 <option name=""></option>
                                 <option name="1">1</option>
                                 <option name="2">2</option>
@@ -139,7 +139,7 @@ export const AgregarCurso = () => {
 
                         <div className="form-cursos__div-inner">
 
-                            <select name="sede" value={sede} defaultValue="" onChange={onInputChange} required={true}>
+                            <select name="sede" value={sede} onChange={onInputChange} required={true}>
                                 <option name=""></option>
                                 <option name="Ciudadela Universitaria">Ciudadela Universitaria</option>
                                 <option name="Cede Robledo">Sede Robledo</option>

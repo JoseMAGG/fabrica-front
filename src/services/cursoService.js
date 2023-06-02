@@ -1,25 +1,15 @@
 import Swal from 'sweetalert2';
+import ApiService from './_api';
 
-export const getCursos = async () => {
+export const getAllCursos = async () => {
+    const cursosResp = await ApiService.get("cursos/find-all");
 
-    const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/cursos/find-all`;
-    const resp = await fetch(url);
-
-    const cursos = await resp.json();
-    return cursos
+    return await cursosResp.json();
 }
 
 export const postCursos = async (curso, materia) => {
 
-    const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/cursos/save`;
-
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(curso),
-        redirect: 'follow'
-    };
-    const resp = await fetch(url, requestOptions);
+    const resp = await ApiService.post(curso, "cursos/save");
 
     if (resp.ok) {
         Swal.fire({
@@ -39,16 +29,7 @@ export const postCursos = async (curso, materia) => {
 }
 
 export const putCursos = async (curso, materia) => {
-
-    const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/cursos/update`;
-
-    const requestOptions = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(curso),
-        redirect: 'follow'
-    };
-    const resp = await fetch(url, requestOptions);
+    const resp = await ApiService.put(curso, "cursos/update");
 
     if (resp.ok) {
         Swal.fire({
@@ -68,18 +49,8 @@ export const putCursos = async (curso, materia) => {
 }
 
 export const deleteCursos = async (curso) => {
-
     const {idMateria} = curso;
-
-    const url = `${import.meta.env.VITE_API_URL_CODE_FACTORY}/cursos/delete`;
-
-    const requestOptions = {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(curso),
-        redirect: 'follow'
-    };
-    const resp = await fetch(url, requestOptions);
+    const resp = await ApiService.deleteApi(curso, "cursos/delete");
 
     if (resp.ok) {
         Swal.fire({
