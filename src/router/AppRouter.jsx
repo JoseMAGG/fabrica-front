@@ -4,12 +4,12 @@ import { MenuJefeDepartamento } from "../jefe-departamento/ui/MenuJefeDepartamen
 import { MenuVicedecano } from "../vicedecano/ui/MenuVicedecano";
 import { Cursos } from "../jefe-departamento/pages/Cursos";
 
-
 export const AppRouter = () => {
     return (
         <>
+               
             <Routes>
-
+                
                 <Route path="/" element={<SelectRole />} />
                 <Route path="menu-jefe-departamento" element={<MenuJefeDepartamento />} />
                 <Route path="menu-vicedecano" element={<MenuVicedecano />} />
