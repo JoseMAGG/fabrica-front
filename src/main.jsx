@@ -5,17 +5,14 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
-import { AppRouter } from './router/AppRouter';
-import { DateProvider } from './context/DateContext';
 
+import { ProgramacionPeriodoAcademcico } from './ProgramacionPeriodoAcademico';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <DateProvider>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
-    </DateProvider>
+    <BrowserRouter>
+      <ProgramacionPeriodoAcademcico/>
+    </BrowserRouter>
   </React.StrictMode>,
 )
