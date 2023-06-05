@@ -335,14 +335,14 @@ export const ModificarCurso = () => {
                 </div>
                 </div>
             </div>
-            </form>
             <div className="d-flex justify-content-between">
                 <button className="form_button" onClick={returnMenu}>
                 Regresar Menu
                 </button>
 
-                <button className="form_button">Modificar Curso</button>
+                <button type="submit" className="form_button">Modificar Curso</button>
             </div>
+            </form>
         </>
         
       )}

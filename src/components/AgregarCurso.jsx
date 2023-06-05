@@ -202,7 +202,6 @@ export const AgregarCurso = () => {
 
                     </div>
                 </div>
-            </form>
             <div className="d-flex justify-content-between">
                     <button
                         className="form_button"
@@ -210,10 +209,12 @@ export const AgregarCurso = () => {
                     >Regresar</button>
 
                     <button
+                        type="submit" 
                         className="form_button"
                     /* onClick={onSubmitForm} */
                     >Crear Curso</button>
                 </div>
+            </form>
         </>
     )
 }
